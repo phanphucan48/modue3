@@ -4,39 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public  $CUSTOMERS =[
+        [
+            'id'=>'1',
+            'name'=>'an',
+            'phone'=>'12345566',
+            'email'=>'an@gmail.com'
+        ],
+        [
+            'id'=>'2',
+            'name'=>'Huy',
+            'phone'=>'12345566',
+            'email'=>'huy@gmail.com'
+        ]
+    ];
     public function index()
     {
-        //tao mang khach hang
-        $customers = [
-            '0' => [
-                'id'  => 1,
-                'name'=> 'customer1',
-                'bod' => '1998-09-01',
-                'email' => 'customer1@gmail.com'
-            ],
-
-            '1' => [
-                'id'  => 2,
-                'name'=> 'customer2',
-                'bod' => '1998-09-01',
-                'email' => 'customer2@gmail.com'
-            ],
-
-            '2' => [
-                'id'  => 3,
-                'name'=> 'customer3',
-                'bod' => '1998-09-01',
-                'email' => 'customer3@gmail.com'
-            ]
-        ];
-        return view('modules.customer.list',compact('customers'));
+        $customers = $this->CUSTOMERS ;
+        return view('modules.taskmanger.index','customer');
     }
 
     /**

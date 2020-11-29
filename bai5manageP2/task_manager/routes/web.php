@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MannagerController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +51,11 @@ Route::prefix('customer')->group(function () {
         // Xóa thông tin dữ liệu khách hàng
         return view('modules.customer.create');
     })->name('customer.create');
+    Route::get('list',[CustomerController::class,'index'])->name('customers.index');
+
+
+});
+
+Route::prefix('taskmanger')->group(function (){
+    Route::get ('tasks',[TaskController::class,'index'])->name('tasks.index');
 });
