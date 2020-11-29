@@ -1,4 +1,6 @@
-<!doctype html>
+<?php
+?>
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,35 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
 </head>
 <body>
-<h1 class="text-center bg-danger ">Danh sách khách hàng</h1>
-<a class="btn btn-success" href="{{ route('taskmanger.create') }}">ADD</a>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">STT</th>
-        <th scope="col">Họ và tên</th>
-        <th scope="col">Số điện thoại</th>
-        <th scope="col">Email</th>
-        <th scope="col">Thao Tac</th>
-    </tr>
-    </thead>
+<table border="1" class="table table-dark" >
     <tbody>
-    @if(isset($customers))
-{{--        {{ dd($customers) }}--}}
-        @foreach($customers as $key=>$customer)
-            <tr>
-                <th scope="row"> {{ $customer['id'] }}  </th>
-                <td>{{ $customer['name'] }}</td>
-                <td>{{ $customer['phone'] }}</td>
-                <td>{{ $customer['email'] }}</td>
-                <td>
-                    <a class="btn btn-warning" href="{{ route('tasks.show',$customer['id']) }}">Xem</a>
-                </td>
-            </tr>
-        @endforeach
+    @if(isset($customer))
+
+        <tr>
+
+            <th scope="row">{{ $customer['id'] }}</th>
+            <td>{{ $customer['name'] }}</td>
+            <td>{{ $customer['phone'] }}</td>
+            <td>{{ $customer['email'] }}</td>
+            <td>
+                <a href="{{ route('tasks.edit',$customer['id']) }}" class="btn btn-warning">Sửa</a> | <a href="#" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+
     @endif
 
     </tbody>
@@ -48,4 +38,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 </html>
-

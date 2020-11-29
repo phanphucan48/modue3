@@ -30,8 +30,7 @@ Route::prefix('customer')->group(function () {
     Route::get('index',[MannagerController::class,'index'])->name('customer.list');
 
     Route::post('store', function (Illuminate\Http\Request $request) {
-//         dd($request->name);
-//         return view();
+
 
 
     })->name('customer.store');
@@ -48,14 +47,25 @@ Route::prefix('customer')->group(function () {
         // Xóa thông tin dữ liệu khách hàng
     });
     Route::get('create', function () {
-        // Xóa thông tin dữ liệu khách hàng
+
         return view('modules.customer.create');
     })->name('customer.create');
     Route::get('list',[CustomerController::class,'index'])->name('customers.index');
 
 
 });
+//Route::get('index', function () {
+////    return view('modules.taskmanger.index');
+//    return view('welcome');
+//});
+Route::prefix('taskmanger')->group(function () {
+//        // Hiển thị danh sách khách hàng
 
-Route::prefix('taskmanger')->group(function (){
-    Route::get ('tasks',[TaskController::class,'index'])->name('tasks.index');
+    Route::get('index', [TaskController::class, 'index'])->name('tasks.index');
+    Route::get('create',function (){
+        return view('modules.taskmanger.create');
+    })->name('taskmanger.create');
+    Route::get('/{id}/show',[TaskController::class,'show'])->name('tasks.show');
+    Route::get('/{id},edit',[TaskController::class,'edit'])->name('tasks.edit');
+
 });

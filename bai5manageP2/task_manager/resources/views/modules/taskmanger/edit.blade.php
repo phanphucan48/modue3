@@ -7,40 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
 </head>
 <body>
-<h1 class="text-center bg-danger ">Danh sách khách hàng</h1>
-<a class="btn btn-success" href="{{ route('taskmanger.create') }}">ADD</a>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">STT</th>
-        <th scope="col">Họ và tên</th>
-        <th scope="col">Số điện thoại</th>
-        <th scope="col">Email</th>
-        <th scope="col">Thao Tac</th>
-    </tr>
-    </thead>
-    <tbody>
-    @if(isset($customers))
-{{--        {{ dd($customers) }}--}}
-        @foreach($customers as $key=>$customer)
-            <tr>
-                <th scope="row"> {{ $customer['id'] }}  </th>
-                <td>{{ $customer['name'] }}</td>
-                <td>{{ $customer['phone'] }}</td>
-                <td>{{ $customer['email'] }}</td>
-                <td>
-                    <a class="btn btn-warning" href="{{ route('tasks.show',$customer['id']) }}">Xem</a>
-                </td>
-            </tr>
-        @endforeach
-    @endif
+<div class="container mt-5">
+    <h1>EDIT FORM</h1>
+    <form>
+        {{--    {{ dd($customer)  }};--}}
+        <div class="form-group">
+            <label for="exampleInputEmail1">id</label>
+            <input type="text" class="form-control" name="id" value="{{ $customer['id'] }}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" class="form-control" name="name" value="{{ $customer['name'] }}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Phone</label>
+            <input type="number" class="form-control" name="phone" value="{{ $customer['phone'] }}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">email</label>
+            <input type="text" class="form-control" name="email" value="{{ $customer['email'] }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-    </tbody>
-</table>
-
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -11,7 +11,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public  $CUSTOMERS =[
+    public $CUSTOMERS =[
         [
             'id'=>'1',
             'name'=>'an',
@@ -27,8 +27,10 @@ class TaskController extends Controller
     ];
     public function index()
     {
-        $customers = $this->CUSTOMERS ;
-        return view('modules.taskmanger.index','customer');
+             $customers = $this->CUSTOMERS;
+             return view('modules.taskmanger.index',compact('customers'))    ;
+
+
     }
 
     /**
@@ -37,8 +39,8 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+   {
+        return view('modules.taskmanger.create','customer')    ;
     }
 
     /**
@@ -60,7 +62,13 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $customers = $this->CUSTOMERS;
+        foreach ($customers as $item){
+           if($item['id']==$id){
+               $customer = $item;
+           }
+        }
+        return view('modules.taskmanger.show',compact('customer')) ;
     }
 
     /**
@@ -71,7 +79,13 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customers = $this->CUSTOMERS;
+        foreach ($customers as $item){
+            if($item['id']==$id){
+                $customer = $item;
+            }
+        }
+        return  view('modules.taskmanger.edit',compact('customer'));
     }
 
     /**
