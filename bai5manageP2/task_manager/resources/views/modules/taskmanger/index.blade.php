@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1 class="text-center bg-danger ">Danh sách khách hàng</h1>
-<a class="btn btn-success" href="{{ route('taskmanger.create') }}">ADD</a>
+
 {{--{{ dd($customers) }};--}}
 @if(!isset($customers))
 
@@ -37,7 +37,7 @@
 {{--        {{ dd($customers) }}--}}
         @foreach($customers as $key=>$customer)
             <tr>
-                <th scope="row"> {{ $customer['id'] }}  </th>
+                <th scope="row"> {{ $key}}  </th>
                 <td>{{ $customer['name'] }}</td>
                 <td>{{ $customer['phone'] }}</td>
                 <td>{{ $customer['email'] }}</td>
@@ -51,7 +51,7 @@
     </tbody>
 </table>
 @endif
-
+<a class="btn btn-success" href="{{ route('tasks.welcome') }}">Tro ve</a>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

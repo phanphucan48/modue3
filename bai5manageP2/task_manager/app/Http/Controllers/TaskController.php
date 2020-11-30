@@ -43,7 +43,7 @@ class TaskController extends Controller
      */
     public function create()
    {
-        return view('modules.taskmanger.create','customer')    ;
+        return view('modules.taskmanger.create')    ;
     }
 
     /**
@@ -54,7 +54,25 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $id = count($this->CUSTOMERS)+1;
+
+        $name = $request->name;
+        $phone = $request->phone;
+        $email = $request->email;
+        $task = [
+            'id'=> $id,
+            'name'=>$name,
+            'phone'=>$phone,
+            'email'=>$email
+        ];
+//        array_push($task,'id'=>$id,[],['phone'=>$phone],['email'=>$email]);
+        array_push($this->CUSTOMERS,$task);
+        $customers = $this->CUSTOMERS;
+
+       return view('modules.taskmanger.index',compact('customers'));
+           // redirect dung de chuyen huong tra ve route hoac phuong thuc khac
+
     }
 
     /**

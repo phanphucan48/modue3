@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-<form action="{{ route('customer.store') }}" method="POST">
+<form action="{{ route('tasks.store') }}" method="POST">
     <h2>Thêm khách hàng</h2>
     <div class="container">
         @csrf

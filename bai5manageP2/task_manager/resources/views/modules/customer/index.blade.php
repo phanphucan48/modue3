@@ -23,7 +23,9 @@
     </tr>
     </thead>
     <tbody>
+
     @if(isset($customers))
+
          @foreach($customers as $key=>$customer)
              <tr>
                 <th scope="row">{{ $customer['id'] }}  </th>
