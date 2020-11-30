@@ -67,5 +67,6 @@ Route::prefix('taskmanger')->group(function () {
     })->name('taskmanger.create');
     Route::get('/{id}/show',[TaskController::class,'show'])->name('tasks.show');
     Route::get('/{id},edit',[TaskController::class,'edit'])->name('tasks.edit');
+    Route::get('welcome',[TaskController::class,'welcome'])->name('tasks.welcome');
 
 });

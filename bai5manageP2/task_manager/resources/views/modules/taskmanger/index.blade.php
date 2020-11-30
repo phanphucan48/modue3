@@ -12,6 +12,11 @@
 <body>
 <h1 class="text-center bg-danger ">Danh sách khách hàng</h1>
 <a class="btn btn-success" href="{{ route('taskmanger.create') }}">ADD</a>
+{{--{{ dd($customers) }};--}}
+@if(!isset($customers))
+
+    <h5 class="text-primary"> Dữ liệu không tồn tại!</h5>
+@else
 <table class="table">
     <thead>
     <tr>
@@ -23,7 +28,12 @@
     </tr>
     </thead>
     <tbody>
-    @if(isset($customers))
+    @if(count($customers)==0)
+        <tr>
+            <td colspan="5"><h5 class="text-primary">Hiện tại chưa có task nào được tạo!</h5></td>
+        </tr>
+    @else
+
 {{--        {{ dd($customers) }}--}}
         @foreach($customers as $key=>$customer)
             <tr>
@@ -40,6 +50,7 @@
 
     </tbody>
 </table>
+@endif
 
 
 

@@ -25,6 +25,9 @@ class TaskController extends Controller
             'email'=>'huy@gmail.com'
         ]
     ];
+    public function welcome(){
+        return view('modules.taskmanger.welcome');
+    }
     public function index()
     {
              $customers = $this->CUSTOMERS;
