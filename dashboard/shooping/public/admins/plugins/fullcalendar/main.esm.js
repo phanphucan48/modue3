@@ -2395,7 +2395,7 @@ function filterSegsViaEls(view, segs, isMirror) {
                     isMirror: isMirror,
                     isStart: seg.isStart,
                     isEnd: seg.isEnd,
-                    // TODO: include seg.range once all components consistently generate it
+                    // TODO: include seg.range once all Components consistently generate it
                     el: seg.el,
                     view: view
                 }

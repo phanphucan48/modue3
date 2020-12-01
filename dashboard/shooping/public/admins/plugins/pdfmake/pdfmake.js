@@ -228,7 +228,7 @@ module.exports = {
 }(this, function () {
 
 	/**
-	 * CryptoJS core components.
+	 * CryptoJS core Components.
 	 */
 	var CryptoJS = CryptoJS || (function (Math, undefined) {
 	    /*
@@ -2857,7 +2857,7 @@ module.exports = $export;
 }(this, function (CryptoJS) {
 
 	/**
-	 * Cipher core components.
+	 * Cipher core Components.
 	 */
 	CryptoJS.lib.Cipher || (function (undefined) {
 	    // Shortcuts
@@ -19456,7 +19456,7 @@ function PdfPrinter(fontDescriptors) {
  * @param {Number} docDefinition.pageSize.width width
  * @param {Number} docDefinition.pageSize.height height
  * @param {Object} [docDefinition.pageMargins] page margins (pdfkit units)
- * @param {Number} docDefinition.maxPagesNumber maximum number of pages to render
+ * @param {Number} docDefinition.maxPagesNumber maximum number of category to render
  *
  * @example
  *
@@ -22036,7 +22036,7 @@ var ColorMixin = {
     if (set) {
       this.fillOpacity(opacity);
     } // save this for text wrapper, which needs to reset
-    // the fill color on new pages
+    // the fill color on new category
 
 
     this._fillColor = [color, opacity];
@@ -24297,7 +24297,7 @@ var TextMixin = {
     var x = this.x,
         y = this.y;
     options = this._initOptions(options);
-    options.height = Infinity; // don't break pages
+    options.height = Infinity; // don't break category
 
     var lineGap = options.lineGap || this._lineGap || 0;
 
@@ -24886,12 +24886,12 @@ function () {
 
       if (this.image.transparency.grayscale != null) {
         // Use Color Key Masking (spec section 4.8.5)
-        // An array with N elements, where N is two times the number of color components.
+        // An array with N elements, where N is two times the number of color Components.
         var val = this.image.transparency.grayscale;
         this.obj.data['Mask'] = [val, val];
       } else if (this.image.transparency.rgb) {
         // Use Color Key Masking (spec section 4.8.5)
-        // An array with N elements, where N is two times the number of color components.
+        // An array with N elements, where N is two times the number of color Components.
         var rgb = this.image.transparency.rgb;
         var mask = [];
         var _iteratorNormalCompletion = true;
@@ -25600,7 +25600,7 @@ function (_stream$Readable) {
       var page;
 
       if (!(page = this._pageBuffer[n - this._pageBufferStart])) {
-        throw new Error("switchToPage(".concat(n, ") out of bounds, current buffer covers pages ").concat(this._pageBufferStart, " to ").concat(this._pageBufferStart + this._pageBuffer.length - 1));
+        throw new Error("switchToPage(".concat(n, ") out of bounds, current buffer covers category ").concat(this._pageBufferStart, " to ").concat(this._pageBufferStart + this._pageBuffer.length - 1));
       }
 
       return this.page = page;
@@ -36792,8 +36792,8 @@ var maxp = new r.Struct({
   maxInstructionDefs: r.uint16, // Number of IDEFs
   maxStackElements: r.uint16, // Maximum stack depth
   maxSizeOfInstructions: r.uint16, // Maximum byte count for glyph instructions
-  maxComponentElements: r.uint16, // Maximum number of components referenced at “top level” for any composite glyph
-  maxComponentDepth: r.uint16 // Maximum levels of recursion; 1 for simple components
+  maxComponentElements: r.uint16, // Maximum number of Components referenced at “top level” for any composite glyph
+  maxComponentDepth: r.uint16 // Maximum levels of recursion; 1 for simple Components
 });
 
 /**
@@ -44471,7 +44471,7 @@ function decompose(glyphs, i, font) {
   var l = L_BASE + s / V_COUNT | 0;
   var v = V_BASE + s % V_COUNT;
 
-  // Don't decompose if all of the components are not available
+  // Don't decompose if all of the Components are not available
   if (!font.hasGlyphForCodePoint(l) || !font.hasGlyphForCodePoint(v) || t !== T_BASE && !font.hasGlyphForCodePoint(t)) {
     return i;
   }
@@ -46248,9 +46248,9 @@ var GSUBProcessor = function (_OTProcessor) {
             //   GPOS will fail to correctly position the mark ligature on top of the
             //   LAM,LAM,HEH ligature. See https://bugzilla.gnome.org/show_bug.cgi?id=676343
             //
-            // - If a ligature is formed of components that some of which are also ligatures
-            //   themselves, and those ligature components had marks attached to *their*
-            //   components, we have to attach the marks to the new ligature component
+            // - If a ligature is formed of Components that some of which are also ligatures
+            //   themselves, and those ligature Components had marks attached to *their*
+            //   Components, we have to attach the marks to the new ligature component
             //   positions!  Now *that*'s tricky!  And these marks may be following the
             //   last component of the whole sequence, so we should loop forward looking
             //   for them and update them.
@@ -46275,7 +46275,7 @@ var GSUBProcessor = function (_OTProcessor) {
             var idx = this.glyphIterator.index + 1;
 
             // Set ligatureID and ligatureComponent on glyphs that were skipped in the matched sequence.
-            // This allows GPOS to attach marks to the correct ligature components.
+            // This allows GPOS to attach marks to the correct ligature Components.
             for (var _iterator3 = matched, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _getIterator(_iterator3);;) {
               var _ref3;
 
@@ -46290,7 +46290,7 @@ var GSUBProcessor = function (_OTProcessor) {
 
               var matchIndex = _ref3;
 
-              // Don't assign new ligature components for mark ligatures (see above)
+              // Don't assign new ligature Components for mark ligatures (see above)
               if (isMarkLigature) {
                 idx = matchIndex;
               } else {
@@ -46308,7 +46308,7 @@ var GSUBProcessor = function (_OTProcessor) {
               idx++; // skip base glyph
             }
 
-            // Adjust ligature components for any marks following
+            // Adjust ligature Components for any marks following
             if (lastLigID && !isMarkLigature) {
               for (var _i4 = idx; _i4 < this.glyphs.length; _i4++) {
                 if (this.glyphs[_i4].ligatureID === lastLigID) {
@@ -47817,7 +47817,7 @@ var TTFGlyph = function (_Glyph) {
   };
 
   // Decodes the glyph data into points for simple glyphs,
-  // or components for composite glyphs
+  // or Components for composite glyphs
 
 
   TTFGlyph.prototype._decode = function _decode() {
@@ -49706,7 +49706,7 @@ var TTFSubset = function (_Subset) {
 
     var buffer = stream.readBuffer(nextOffset - curOffset);
 
-    // if it is a compound glyph, include its components
+    // if it is a compound glyph, include its Components
     if (glyf && glyf.numberOfContours < 0) {
       buffer = new Buffer(buffer);
       for (var _iterator = glyf.components, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _getIterator(_iterator);;) {
@@ -59991,7 +59991,7 @@ function addAll(target, otherArray) {
 
 /**
  * Creates an instance of LayoutBuilder - layout engine which turns document-definition-object
- * into a set of pages, lines, inlines and vectors ready to be rendered into a PDF
+ * into a set of category, lines, inlines and vectors ready to be rendered into a PDF
  *
  * @param {Object} pageSize - an object defining page width and height
  * @param {Object} pageMargins - an object defining top, left, right and bottom margins
@@ -60010,14 +60010,14 @@ LayoutBuilder.prototype.registerTableLayouts = function (tableLayouts) {
 };
 
 /**
- * Executes layout engine on document-definition-object and creates an array of pages
+ * Executes layout engine on document-definition-object and creates an array of category
  * containing positioned Blocks, Lines and inlines
  *
  * @param {Object} docStructure document-definition-object
  * @param {Object} fontProvider font provider
  * @param {Object} styleDictionary dictionary with style definitions
  * @param {Object} defaultStyle default style definition
- * @return {Array} an array of pages
+ * @return {Array} an array of category
  */
 LayoutBuilder.prototype.layoutDocument = function (docStructure, fontProvider, styleDictionary, defaultStyle, background, header, footer, images, watermark, pageBreakBeforeFct) {
 
@@ -62970,7 +62970,7 @@ var ElementWriter = __webpack_require__(448);
 /**
  * Creates an instance of PageElementWriter - an extended ElementWriter
  * which can handle:
- * - page-breaks (it adds new pages when there's not enough space left),
+ * - page-breaks (it adds new category when there's not enough space left),
  * - repeatable fragments (like table-headers, which are repeated everytime
  *                         a page-break occurs)
  * - transactions (used for unbreakable-blocks when we want to make sure

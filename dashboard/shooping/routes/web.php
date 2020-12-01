@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
-Route::prefix('categories')->group(function () {
-  Route::get('/create',[CategoryController::class,'create'])->name('category.create');
+Route::prefix('category')->group(function () {
+  Route::get('/add',[CategoryController::class,'add'])->name('category.add');
+  Route::get('/index',[CategoryController::class,'index'])->name('category.index');
+  Route::post('/store',[CategoryController::class,'store'])->name('category.store');
 });
