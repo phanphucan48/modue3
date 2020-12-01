@@ -17,14 +17,17 @@ class CategoryController extends Controller
         $this->category = $category;
     }
 
-
-    public function add(){
+    public function getCategory($parentId){
         //dung tinh nang de quy
 //        lay tat ca cac bien category
         $data = $this->category->all();
         $recusive = new Recusive($data);
-        $htmlOpiton = $recusive->categoryRecusive();
+        $htmlOpiton = $recusive->categoryRecusive($parentId);
+        return $htmlOpiton;
+    }
+    public function add(){
 
+        $htmlOpiton = $this->getCategory($parentId = '');
 
 
        return view('category.add',compact('htmlOpiton'));
@@ -47,5 +50,32 @@ class CategoryController extends Controller
             'slug'=> Str::slug($request->name)
         ]);
         return redirect()->route('category.index');
+    }
+
+    public function show($id){
+        $category = $this->category->find($id);
+        $htmlOpiton = $this->getCategory($category->parent_id);
+
+        //dung phuong thuc find de lay id
+        return view('category.show',compact('category','htmlOpiton'));
+    }
+    public function edit($id){
+        $category = $this->category->find($id);
+        $htmlOpiton = $this->getCategory($category->parent_id);
+
+        //dung phuong thuc find de lay id
+        return view('category.edit',compact('category','htmlOpiton'));
+    }
+    public function update($id,Request $request){
+            $this->category->find($id)->update([
+                'name'=>$request->name,
+                'parent_id'=>$request->parent_id,
+                'slug'=> Str::slug($request->name)
+            ]);
+        return redirect()->route('category.index');
+    }
+
+    public function delete($id){
+
     }
 }

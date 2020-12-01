@@ -16,7 +16,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-       @include('pratials.content-header',['name'=>'category','key'=>'List'])
+        @include('pratials.content-header',['name'=>'category','key'=>'List'])
 
         <div class="content">
             <div class="container-fluid">
@@ -36,19 +36,19 @@
                             </thead>
                             <tbody>
 
-                          @foreach($categories as $category)
+{{--                            @foreach($categories as $category)--}}
 
-                            <tr>
-                                <th scope="row">{{ $category->id }}</th>
-                                <td>{{  $category->name  }}</td>
-                                <td>
-                                    <a href="{{ route('category.show',['id'=> $category->id ]) }}" class="btn btn-success">Xem</a>
-                                    <a href="{{ route('category.edit',['id'=> $category->id ]) }}" class="btn btn-warning">Sua</a>
-                                    <a href="{{ route('category.delete',['id'=> $category->id ]) }}" class="btn btn-danger">Xoa</a>
-                                </td>
+                                <tr>
+                                    <th scope="row">{{ $category->id }}</th>
+                                    <td>{{  $category->name  }}</td>
+                                    <td>
+                                        <a href="{{ route('category.show',['id'=> $category->id ]) }}" class="btn btn-success">Xem</a>
+                                        <a href="{{ route('category.edit',['id'=> $category->id ]) }}" class="btn btn-warning">Sua</a>
+                                        <a href="{{ route('category.delete',['id'=> $category->id ]) }}" class="btn btn-danger">Xoa</a>
+                                    </td>
 
-                            </tr>
-                          @endforeach
+                                </tr>
+{{--                            @endforeach--}}
 
                             </tbody>
 
@@ -56,9 +56,9 @@
 
                     </div>
 
-                    <div class="col-md-12">
-                        {{ $categories->links() }}
-                    </div>
+{{--                    <div class="col-md-12">--}}
+{{--                        {{ $categories->links() }}--}}
+{{--                    </div>--}}
 
                 </div>
 
@@ -69,6 +69,7 @@
 
 
 @endsection
+
 
 
 
