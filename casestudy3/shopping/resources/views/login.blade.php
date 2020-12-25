@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="{{ route('checklogin') }}" method="post">
                     @csrf
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
@@ -144,6 +144,10 @@
                     <div class="form-group">
                         <input type="submit" name="submit" value="submit" class="btn float-right login_btn">
                     </div>
+
+                    @if(isset($mess))
+                        <p class="text-danger"> {{ $mess }}</p>
+                        @endif
                 </form>
             </div>
             <div class="card-footer">

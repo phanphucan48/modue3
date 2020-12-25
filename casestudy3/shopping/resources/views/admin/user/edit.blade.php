@@ -22,13 +22,14 @@
 
 
     <div class="content-wrapper">
-    @include('partials.content-header',['name'=>'User','key'=>'add'])
+    @include('partials.content-header',['name'=>'User','key'=>'edit'])
     <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('users.update',['id'=> $user->id]) }}" method="post" enctype="multipart/form-data">
+{{--                            --}}
                             @csrf
                             <div class="form-group">
                                 <label >Ten slider</label>
@@ -36,7 +37,7 @@
                                        class="form-control "
                                        placeholder="Nhap Ten "
                                        name="name"
-                                       value="{{old('name')}}"
+                                       value="{{ $user->name }}"
                                 >
                             </div>
 
@@ -46,7 +47,7 @@
                                        class="form-control "
                                        placeholder="Nhap email "
                                        name="email"
-                                       value="{{old('email')}}"
+                                       value="{{ $user->email }}"
                                 >
                             </div>
 
@@ -62,8 +63,12 @@
                             <div class="form-group">
                                 <label >Chon vai tro</label>
                                 <select name="role_id[]" class="form-control select2_init" multiple>
+
+
                                     @foreach($roles as $role)
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    <option
+                                        {{ $rolesOfUser->contains('id', $role->id) ? 'selected' : ''}}
+                                        value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

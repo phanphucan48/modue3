@@ -27,10 +27,12 @@
                 <div class="row">
 
                     <div class="col-md-12">
+                        @can('category-add')
 
                         <a href="{{ route('categories.create') }}" class="btn btn-success float-right m-2">
                             Add
                         </a>
+                        @endcan
 
                     </div>
 
@@ -50,11 +52,19 @@
                            @foreach($categories as $category)
 
                             <tr>
+
                                 <th scope="row">{{ $category->id }}</th>
                                 <td>{{ $category->name }}</td>
                                 <td>
+                                    @can('category-edit')
+
                                     <a href="{{ route('categories.edit',['id'=>$category->id]) }}" class="btn btn-warning">Sua</a>
+
+                                    @endcan
+
+                                        @can('category-delete')
                                     <a href="{{ route('categories.delete',['id'=>$category->id]) }}" class="btn btn-danger">Xoa</a>
+                                        @endcan
                                 </td>
 
                             </tr>

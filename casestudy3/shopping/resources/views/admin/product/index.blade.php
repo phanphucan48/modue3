@@ -8,6 +8,17 @@
 
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('admins\product\index\list.css') }}">
+
+@endsection
+
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('admins\product\index\list.js') }}"></script>
+
+@endsection
+
 
 @section('content')
 
@@ -50,42 +61,45 @@
                             </thead>
                             <tbody>
 
-{{--                            @foreach($categories as $category)--}}
+                            @foreach($products as $productItem)
 
+{{--                                      {{ dd($productItem) }}--}}
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <th scope="row">Iphone 4</th>
-                                    <th scope="row">2.400.000</th>
+                                    <th scope="row">{{ $productItem->id }}</th>
+                                    <th scope="row">{{ $productItem->name }}</th>
+                                    <th scope="row">{{ number_format($productItem->price ) }}</th>
                                     <th scope="row">
-                                        <img src="" alt="">
+                                        <img class="product_image_150_100" src="{{ $productItem->feature_image_path }}" alt="">
                                     </th>
-                                    <th scope="row">Dien thoai</th>
+                                    <th scope="row">{{ $productItem->category->name }}</th>
 
                                     <td>
-                                        <a href="" class="btn btn-warning">Sua</a>
-                                        <a href="" class="btn btn-danger">Xoa</a>
+                                        <a href="{{ route('product.edit',['id'=>$productItem->id]) }}" class="btn btn-warning">Sua</a>
+                                        <a href="{{ route('product.delete',['id'=>$productItem->id]) }}"
+                                           class="btn btn-danger action_delete"
+                                           data-url="{{ route('product.delete',['id'=>$productItem->id]) }}"
+                                        >Xoa</a>
                                     </td>
 
                                 </tr>
 
-{{--                            @endforeach--}}
+                            @endforeach
 
                             </tbody>
                         </table>
 
                     </div>
                     <div class="col-md-12">
-{{--                        {{ $categories->links() }}--}}
+                        {{ $products->links() }}
                     </div>
 
 
 
 
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+
+            </div>
         </div>
-        <!-- /.content -->
     </div>
 
 
