@@ -31,7 +31,7 @@
                         <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label >Ten slider</label>
+                                <label >Ten </label>
                                 <input type="text"
                                        class="form-control "
                                        placeholder="Nhap Ten "
